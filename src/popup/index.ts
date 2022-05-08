@@ -1,4 +1,4 @@
-import { totp } from "otplib";
+import {generateToken, generateTotpUri} from 'authenticator';
 
 async function saveSecret(name: string, secret: string) {
   let names = await chrome.storage.local.get("names");
@@ -21,7 +21,7 @@ async function removeSecret(name: string) {
     let names: string[] = namesObject.names;
     names.splice(names.indexOf(name), 1);
     await chrome.storage.local.remove(name);
-    await chrome.storage.local.set({names});
+    await chrome.storage.local.set({ names });
   }
 }
 
@@ -52,12 +52,14 @@ function createPrettyCodeChild(name: string, secret: string) {
   let wrapper = document.createElement("div");
   let deleteButton = document.createElement("button");
   let text = document.createElement("p");
+  console.log(`Za ${name} secret je ${secret}`)
+  let key = generateToken(secret);
   wrapper.className = "code-wrapper";
   text.className = "code-text";
   deleteButton.className = "code-delete";
   deleteButton.onclick = () => removeSecret(name);
   deleteButton.innerText = "Delete";
-  text.innerText = `${name} => ${totp.generate(secret)}`;
+  text.innerText = `${name} => ${key}`;
   wrapper.append(text, deleteButton);
   li.appendChild(wrapper);
   return li;
