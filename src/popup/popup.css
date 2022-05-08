@@ -1,0 +1,14 @@
+.code-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.code-text{
+  display: flex;
+}
+
+.code-delete{
+  display: flex;
+  height: 30px;
+}

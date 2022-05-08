@@ -1,0 +1,19 @@
+{
+  "manifest_version":3,
+  "name":"Chrome OTP",
+  "version":"0.0.1",
+  
+  "description":"2FA TOTP generator",
+
+  "background":{
+    "service_worker":"background.js"
+  },
+
+  "permissions":[
+    "storage"
+  ],
+
+  "action":{
+    "default_popup":"popup.html"
+  }
+}
