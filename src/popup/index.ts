@@ -52,7 +52,6 @@ function createPrettyCodeChild(name: string, secret: string) {
   let wrapper = document.createElement("div");
   let deleteButton = document.createElement("button");
   let text = document.createElement("p");
-  console.log(`Za ${name} secret je ${secret}`)
   let key = generateToken(secret);
   wrapper.className = "code-wrapper";
   text.className = "code-text";

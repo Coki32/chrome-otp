@@ -15,7 +15,7 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     fallback: {
-      buffer: require.resolve("buffer/"),
+      // buffer: require.resolve("buffer/"), //Previous auth library needed this polyfilled also
       stream: require.resolve("stream-browserify"),
       crypto: require.resolve("crypto-browserify"),
     },
